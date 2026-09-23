@@ -1,4 +1,4 @@
-import './style.css';
+import '../styles.css';
 
 const STORAGE_KEY = 'daymark-tasks';
 const starterTasks = [
