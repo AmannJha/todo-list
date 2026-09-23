@@ -21,6 +21,8 @@ const progressValue = document.querySelector('#progress-value');
 const progressRing = document.querySelector('#progress-ring');
 const filterButtons = document.querySelectorAll('.filter-button');
 const clearCompletedButton = document.querySelector('#clear-completed');
+const navLinks = document.querySelectorAll('[data-nav-filter]');
+const focusTaskButton = document.querySelector('#focus-task');
 
 function loadTasks() {
   const savedTasks = localStorage.getItem(STORAGE_KEY);
@@ -71,6 +73,7 @@ function render() {
   }
 
   filterButtons.forEach((button) => button.classList.toggle('active', button.dataset.filter === activeFilter));
+  navLinks.forEach((link) => link.classList.toggle('active', link.dataset.navFilter === activeFilter));
 }
 
 function escapeHtml(value) {
@@ -103,6 +106,18 @@ filterButtons.forEach((button) => button.addEventListener('click', () => {
   activeFilter = button.dataset.filter;
   render();
 }));
+
+navLinks.forEach((link) => link.addEventListener('click', (event) => {
+  if (link.tagName === 'A') event.preventDefault();
+  activeFilter = link.dataset.navFilter;
+  render();
+  document.querySelector('#today').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+
+focusTaskButton.addEventListener('click', () => {
+  document.querySelector('#today').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  taskInput.focus({ preventScroll: true });
+});
 
 clearCompletedButton.addEventListener('click', () => {
   tasks = tasks.filter((task) => !task.completed);
