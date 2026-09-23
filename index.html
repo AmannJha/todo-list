@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <title>Daymark | A calmer to-do list</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="intro-panel" aria-labelledby="page-title">
+        <div class="brand-mark" aria-hidden="true">D<span>·</span></div>
+        <p class="eyebrow">Wednesday, September 23</p>
+        <h1 id="page-title">Make room for<br /><em>what matters.</em></h1>
+        <p class="intro-copy">A simple place to gather the loose ends, then gently bring them to a close.</p>
+        <div class="daily-note">
+          <span class="note-line"></span>
+          <p>“Small steps still move the day forward.”</p>
+        </div>
+      </section>
+
+      <section class="todo-panel" aria-label="Your tasks">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Your day</p>
+            <h2>Tasks <span id="task-count" class="count-badge">0</span></h2>
+          </div>
+          <div class="progress-ring" id="progress-ring" aria-label="0% complete"><span id="progress-value">0%</span></div>
+        </div>
+
+        <form class="task-form" id="task-form">
+          <label class="sr-only" for="task-input">Add a task</label>
+          <input id="task-input" name="task" type="text" placeholder="What needs your attention?" autocomplete="off" maxlength="120" required />
+          <button type="submit" aria-label="Add task" title="Add task">+</button>
+        </form>
+
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button class="filter-button active" data-filter="all" type="button">All</button>
+            <button class="filter-button" data-filter="active" type="button">Open</button>
+            <button class="filter-button" data-filter="completed" type="button">Done</button>
+          </div>
+          <button class="clear-button" id="clear-completed" type="button">Clear done</button>
+        </div>
+
+        <div id="task-list" class="task-list" aria-live="polite"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <div class="empty-icon">✦</div>
+          <h3 id="empty-title">Nothing here yet</h3>
+          <p id="empty-copy">Add one small thing and start there.</p>
+        </div>
+        <p class="keyboard-hint"><kbd>Enter</kbd> to add <span>·</span> <kbd>Space</kbd> to complete</p>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
