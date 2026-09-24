@@ -1,4 +1,4 @@
-# Day-Mark
+# Day Mark
 
 A calm, focused to-do list for gathering tasks and bringing them to a close.
 
